@@ -3,14 +3,14 @@ import 'package:futurex/common_widget/common_widget.dart';
 import 'package:futurex/utils/color_collections.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
-class Welcome_Page_3 extends StatefulWidget {
-  const Welcome_Page_3({super.key});
+class Welcome_Page_4 extends StatefulWidget {
+  const Welcome_Page_4({super.key});
 
   @override
-  State<Welcome_Page_3> createState() => _Welcome_Page_3State();
+  State<Welcome_Page_4> createState() => _Welcome_Page_4State();
 }
 
-class _Welcome_Page_3State extends State<Welcome_Page_3> {
+class _Welcome_Page_4State extends State<Welcome_Page_4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
                 maxSteps: 5,
                 progressType:
                 LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 3,
+                currentStep: 4,
                 progressColor: Colors.blue,
                 backgroundColor: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(10), //  NEW
@@ -34,7 +34,7 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
               child: ReusableText(
                 FromTop: 50,
                 TextColor: ColorCollections.Black,
-                TextString: "Learning Style",
+                TextString: "Course Difficulty Ranking",
                 FontSize: 23,
                 TextFontWeight: FontWeight.bold,
               ),
@@ -43,8 +43,8 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
               child: ReusableText(
                 FromTop: 10,
                 FromBottom: 0,
-                TextColor: Colors.grey.shade700,
-                TextString: "Rank your preferred learning methods",
+                TextColor: ColorCollections.Black,
+                TextString: "Please rank your courses from most ",
                 FontSize: 18,
                 TextFontWeight: FontWeight.w400,
               ),
@@ -52,22 +52,23 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
             Center(
               child: ReusableText(
                 // FromTop: 50,
-                TextColor: Colors.grey.shade700,
-                TextString: "Top being your most favorite",
+                TextColor: ColorCollections.Black,
+                TextString: "difficult (top) to least difficult (bottom).",
                 FontSize: 18,
                 TextFontWeight: FontWeight.w400,
               ),
             ),
+            SizedBox(height: 20,),
             ReorderableListView(
               shrinkWrap: true,
               children: [
-                for (int i=0;i<preferredWay.length;i++)
+                for (int i=0;i<courses.length;i++)
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey.shade100)
                     ),
-                    key: ValueKey(preferredWay[i]),
+                    key: ValueKey(courses[i]),
                     height: 90,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,25 +81,27 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
                           ),
                         ),
                         Expanded(
-                          child: Row(
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // SizedBox(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 15,left: 10),
-                                child: Icon(icons[i],color: Colors.blue,size: 30,),
-                              ),
                               Container(
                                 // width: 220,
                                 child: ReusableText(
                                   // FromTop: 50,
                                   TextColor: Colors.black54,
-                                  TextString: preferredWay[i],
+                                  TextString: courses[i],
                                   FontSize: 18,
                                   TextFontWeight: FontWeight.w700,
                                 ),
                               ),
-
+                              ReusableText(
+                                FromTop: 0,
+                                FromBottom: 0,
+                                TextColor: Colors.black54,
+                                TextString: "CS401",
+                                FontSize: 14,
+                                TextFontWeight: FontWeight.w500,
+                              ),
                             ],
                           ),
                         ),
@@ -120,7 +123,7 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
                               ),
                               IconButton(
                                 onPressed: (){
-                                  if (i < preferredWay.length - 1) {
+                                  if (i < courses.length - 1) {
                                     updateMySubjectPosition(i, i + 1);
                                   }
                                 },
@@ -146,16 +149,12 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
       ),
     );
   }
-  List<IconData> icons = [
-    Icons.video_call,
-    Icons.event_note_outlined,
-    Icons.menu_book
-  ];
-
-  final List preferredWay = [
-    "Video Lessons ",
-    "Short NoteD",
-    "Text book",
+  final List courses = [
+    "Introduction to Computer ",
+    "Data Structures and Algorithm ",
+    "Database Systems ",
+    "Web Development",
+    "Artificial Intelligence",
   ];
 
   void updateMySubjectPosition(int oldIndex, int newIndex) {
@@ -164,8 +163,8 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
         newIndex--;
       }
     });
-    final course = preferredWay.removeAt(oldIndex);
-    preferredWay.insert(newIndex, course);
+    final course = courses.removeAt(oldIndex);
+    courses.insert(newIndex, course);
   }
 
   Widget reusableButtonContainer(
@@ -176,7 +175,7 @@ class _Welcome_Page_3State extends State<Welcome_Page_3> {
           // Navigator.pop(context);
         } else {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/welcome_profile_setup_4_page', (predicate) => true);
+              context, '/welcome_profile_setup_5_page', (predicate) => true);
         }
       },
       child: Container(

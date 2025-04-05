@@ -10,10 +10,12 @@ import 'package:futurex/features/pages/welcome%20page/welcome_page_2_bloc/welcom
 import 'package:futurex/features/pages/welcome%20page/welcome_prfile_setup_page_3.dart';
 import 'package:futurex/features/pages/welcome%20page/welcome_profile_setup_page_1.dart';
 import 'package:futurex/features/pages/welcome%20page/welcome_profile_setup_page_2.dart';
+import 'package:futurex/features/pages/welcome%20page/welcome_profile_setup_page_5.dart';
 import 'package:futurex/route_handler/name.dart';
 import 'package:futurex/services/global.dart';
 
 import '../features/pages/welcome page/welcome_page_1_bloc/welcome_profile_setup_bloc.dart';
+import '../features/pages/welcome page/welcome_profile_setup_page_4.dart';
 
 class NamedRouteSettings {
   NamedRouteSettings({required BuildContext context});
@@ -62,6 +64,20 @@ class NamedRouteSettings {
       pageEntity(
         route: NamedRoutes.WELCOMEPROFILESETUPPAGE_3,
         page:  Welcome_Page_3(),
+        // bloc: BlocProvider(
+        //   create: (_) => QuizBloc(),
+        // ),
+      ),
+      pageEntity(
+        route: NamedRoutes.WELCOMEPROFILESETUPPAGE_4,
+        page:  Welcome_Page_4(),
+        // bloc: BlocProvider(
+        //   create: (_) => QuizBloc(),
+        // ),
+      ),
+      pageEntity(
+        route: NamedRoutes.WELCOMEPROFILESETUPPAGE_5,
+        page:  Welcome_Page_5(),
         // bloc: BlocProvider(
         //   create: (_) => QuizBloc(),
         // ),

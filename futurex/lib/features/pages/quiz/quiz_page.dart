@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futurex/common_widget/common_widget.dart';
 import 'package:futurex/features/pages/quiz/quiz_bloc/quiz_bloc.dart';
+import 'package:futurex/features/pages/quiz/quiz_result_page.dart';
 
 class Quiz_Page extends StatefulWidget {
   const Quiz_Page({super.key});
@@ -95,8 +96,8 @@ class _Quiz_PageState extends State<Quiz_Page> {
       BuildContext context, String content, Color contColor, Color txtColor) {
     return InkWell(
       onTap: () {
-        if (content == "Back") {
-          // Navigator.pop(context);
+        if (content == "Next") {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>QuizResult()));
         } else {
           // Navigator.pushNamedAndRemoveUntil(
           //     context, '/index_page', (predicate) => true);

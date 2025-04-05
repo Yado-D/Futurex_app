@@ -48,6 +48,7 @@ dependencies:
   progress_indicator: ^0.2.2
   percent_indicator: ^4.2.4
   numberpicker: ^2.1.2
+  dashed_line: ^0.1.0+3
 
 dev_dependencies:
   flutter_test:
